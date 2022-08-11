@@ -1,1 +1,1 @@
-web: unicorn -w 1
+web: unicorn -w 1 "main:app"
