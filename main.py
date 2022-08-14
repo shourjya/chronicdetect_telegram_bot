@@ -30,47 +30,43 @@ def bot_webhook():
     send_telegram_message(chat_id,answer)
 
    	try:	
-
-   		if answer == 'Y'
-    	
-    		send_telegram_message(chat_id,"What is your age")
-    		payload = request.json
-    		message = payload["message"]
-    		age = message.get("text","")
+   	    	
+    	send_telegram_message(chat_id,"What is your age")
+    	payload = request.json
+    	message = payload["message"]
+    	age = message.get("text","")
 	    	
-    		send_telegram_message(chat_id,"What is your sex [M/F]")
-    		payload = request.json
-    		message = payload["message"]
-    		sex = message.get("text","")
+    	send_telegram_message(chat_id,"What is your sex [M/F]")
+    	payload = request.json
+    	message = payload["message"]
+    	sex = message.get("text","")
 
-    		send_telegram_message(chat_id,"Are you a smoker [Smoker/Non-Smoker]")
-    		payload = request.json
-    		message = payload["message"]
-    		sex = message.get("text","")
+    	send_telegram_message(chat_id,"Are you a smoker [Smoker/Non-Smoker]")
+    	payload = request.json
+    	message = payload["message"]
+    	smoker = message.get("text","")
 
-    		send_telegram_message(chat_id,"Do you have diabetes [No/Type 1/Type 2]")
-    		payload = request.json
-    		message = payload["message"]
-    		Diabetes = message.get("text","")
+    	send_telegram_message(chat_id,"Do you have diabetes [No/Type 1/Type 2]")
+    	payload = request.json
+    	message = payload["message"]
+    	Diabetes = message.get("text","")
 
-    		send_telegram_message(chat_id,"Do you have high blood cholesterol [Yes/No]")
-    		payload = request.json
-    		message = payload["message"]
-    		blood_cholesterol = message.get("text","")
+    	send_telegram_message(chat_id,"Do you have high blood cholesterol [Yes/No]")
+    	payload = request.json
+    	message = payload["message"]
+    	blood_cholesterol = message.get("text","")
 
-    		send_telegram_message(chat_id,"Do you have high blood pressure [Yes/No]")
-    		payload = request.json
-    		message = payload["message"]
-    		BP = message.get("text","")
+    	send_telegram_message(chat_id,"Do you have high blood pressure [Yes/No]")
+    	payload = request.json
+    	message = payload["message"]
+    	BP = message.get("text","")
 
-    		send_telegram_message(chat_id,"Do you have take blood pressure medication [Yes/No]")
-    		payload = request.json
-    		message = payload["message"]
-    		BP_medication = message.get("text","")
+    	send_telegram_message(chat_id,"Do you have take blood pressure medication [Yes/No]")
+    	payload = request.json
+    	message = payload["message"]
+    	BP_medication = message.get("text","")
 
-    	elif answer == 'N'
-    		send_telegram_message(chat_id,'Thanks. Hope to see you soon.')
-
+ 
     except Exception as e:
     	send_telegram_message(chat_id,"Something went wrong! Restart App")
 
