@@ -7,77 +7,21 @@ app = Flask(__name__)
 TELEGRAM_API_TOKEN = "5531087741:AAHNuNbYL267FWRBGHrKkblzPVo5PREIPC4"
  
 def send_telegram_message(chat_id, text):
-    requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendMessage", json={
-        "chat_id": chat_id,
-        "text":text
-    })
+ 	requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendMessage", json={
+ 		"chat_id": chat_id,
+ 		"text":text
+ 	})
 
-def send_telegram_message(chat_id, text):
-    requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendMessage", json={
-        "chat_id": chat_id,
-        "text":text
-    })
-
-@app.route(f"/{TELEGRAM_API_TOKEN}", methods=["GET,""POST"])
+@app.route(f"/{TELEGRAM_API_TOKEN}", methods=["POST"])
 def bot_webhook():
     payload = request.json
     message = payload["message"]
     chat_id = message["chat"]["id"]
     text = message.get("text","")
     print("Message received",text)
-
-    answer = "Welcome to Chronic Detect DTx Bot!"
+    answer = "Hello!"
     send_telegram_message(chat_id,answer)
-    answer = "The bot will ask you a set of questions about your medical history and symptoms."
-    send_telegram_message(chat_id,answer)
-    answer = "The bot will then give you a risk score for developing heart attack or stroke within the next 10 years."
-    send_telegram_message(chat_id,answer)
-
-    send_telegram_message(chat_id,"Do you want to continue? [Y/N]")
-    payload1 = request.json
-    message1 = payload1["message"]
-    letsgo = message1.get("text","")
-
     return {}, 200 
-        
-    # send_telegram_message(chat_id,"What is your age?")
-    # payload = request.json
-    # message = payload["message"]
-    # age = message.get("text","")
-            
-    #   send_telegram_message(chat_id,"What is your sex? [M/F]")
-    #   payload = request.json
-    #   message = payload["message"]
-    #   sex = message.get("text","")
-
-    #   send_telegram_message(chat_id,"Are you a smoker? [Smoker/Non-Smoker]")
-    #   payload = request.json
-    #   message = payload["message"]
-    #   smoker = message.get("text","")
-
-    #   send_telegram_message(chat_id,"Do you have diabetes? [No/Type 1/Type 2]")
-    #   payload = request.json
-    #   message = payload["message"]
-    #   Diabetes = message.get("text","")
-
-    #   send_telegram_message(chat_id,"Do you have high blood cholesterol? [Yes/No]")
-    #   payload = request.json
-    #   message = payload["message"]
-    #   blood_cholesterol = message.get("text","")
-
-    #   send_telegram_message(chat_id,"Do you have high blood pressure? [Yes/No]")
-    #   payload = request.json
-    #   message = payload["message"]
-    #   BP = message.get("text","")
-
-    #   send_telegram_message(chat_id,"Do you have take blood pressure medication? [Yes/No]")
-    #   payload = request.json
-    #   message = payload["message"]
-    #   BP_medication = message.get("text","")
-
- 
-    # except Exception as e:
-    #   send_telegram_message(chat_id,"Something went wrong! Restart App")
  
 if __name__ == '__main__':
    app.run(port=5000,debug=True)
