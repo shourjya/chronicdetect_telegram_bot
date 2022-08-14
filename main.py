@@ -27,11 +27,8 @@ def bot_webhook():
     answer = "The bot will then give you a risk score for developing heart attack or stroke within the next 10 years."
     send_telegram_message(chat_id,answer)
 
-    send_telegram_message(chat_id,"Do you want to continue? [Y/N]")
-    #payload1 = request.json
-    #message1 = payload1["message"]
-   	#letsgo = message1.get("text","")
-
+    answer = "Do you want to continue? [Y/N]"
+    send_telegram_message(chat_id,answer)
 	return {}, 200 
     	
     # send_telegram_message(chat_id,"What is your age?")
