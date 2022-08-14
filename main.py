@@ -21,7 +21,7 @@ def bot_webhook():
     print("Message received",text)
     answer = "Hello!"
     send_telegram_message(chat_id,answer)
-    return {}, 200 
+    return {}, 200
  
 if __name__ == '__main__':
    app.run(port=5000,debug=True)
