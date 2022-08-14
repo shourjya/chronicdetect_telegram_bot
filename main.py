@@ -19,7 +19,10 @@ def bot_webhook():
     chat_id = message["chat"]["id"]
     text = message.get("text","")
     print("Message received",text)
-    answer = "Hello!"
+    
+    answer = "Welcome to Chronic Detect DTx Bot!"
+    send_telegram_message(chat_id,answer)
+    answer = "We will ask you a set of questions about your medical hitory, symptoms and in return give you a risk score for developing cardiac conditions in the next 10 years!"
     send_telegram_message(chat_id,answer)
     return {}, 200
  
