@@ -6,12 +6,11 @@ import requests
 app = Flask(__name__)
 TELEGRAM_API_TOKEN = "5531087741:AAHNuNbYL267FWRBGHrKkblzPVo5PREIPC4"
  
- def send_telegram_message(chat_id, text):
- 	request.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendMessage", json={
- 		"chat_id": chat_id,
- 		"text":text
-
- 	})
+def send_telegram_message(chat_id, text):
+ request.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendMessage", json={
+  "chat_id": chat_id,
+  "text":text
+  })
 
 @app.route(f"/{TELEGRAM_API_TOKEN}", methods=["POST"])
 def bot_webhook():
