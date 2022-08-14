@@ -25,42 +25,46 @@ def bot_webhook():
     answer = "The bot will ask you a set of questions about your medical history and symptoms."
     send_telegram_message(chat_id,answer)
     answer = "The bot will then give you a risk score for developing heart attack or stroke within the next 10 years."
+    
     send_telegram_message(chat_id,answer)
     answer = "Do you want to continue? [Y/N]"
-    send_telegram_message(chat_id,answer)
-
-   	    	
-    send_telegram_message(chat_id,"What is your age")
+    payload = request.json
+    message = payload["message"]
+    letsgo = message.get("text","")
+   	letsgo = message.get("text","")
+    	
+    send_telegram_message(chat_id,"What is your age?")
     payload = request.json
     message = payload["message"]
     age = message.get("text","")
+
 	    	
-    # 	send_telegram_message(chat_id,"What is your sex [M/F]")
+    # 	send_telegram_message(chat_id,"What is your sex? [M/F]")
     # 	payload = request.json
     # 	message = payload["message"]
     # 	sex = message.get("text","")
 
-    # 	send_telegram_message(chat_id,"Are you a smoker [Smoker/Non-Smoker]")
+    # 	send_telegram_message(chat_id,"Are you a smoker? [Smoker/Non-Smoker]")
     # 	payload = request.json
     # 	message = payload["message"]
     # 	smoker = message.get("text","")
 
-    # 	send_telegram_message(chat_id,"Do you have diabetes [No/Type 1/Type 2]")
+    # 	send_telegram_message(chat_id,"Do you have diabetes? [No/Type 1/Type 2]")
     # 	payload = request.json
     # 	message = payload["message"]
     # 	Diabetes = message.get("text","")
 
-    # 	send_telegram_message(chat_id,"Do you have high blood cholesterol [Yes/No]")
+    # 	send_telegram_message(chat_id,"Do you have high blood cholesterol? [Yes/No]")
     # 	payload = request.json
     # 	message = payload["message"]
     # 	blood_cholesterol = message.get("text","")
 
-    # 	send_telegram_message(chat_id,"Do you have high blood pressure [Yes/No]")
+    # 	send_telegram_message(chat_id,"Do you have high blood pressure? [Yes/No]")
     # 	payload = request.json
     # 	message = payload["message"]
     # 	BP = message.get("text","")
 
-    # 	send_telegram_message(chat_id,"Do you have take blood pressure medication [Yes/No]")
+    # 	send_telegram_message(chat_id,"Do you have take blood pressure medication? [Yes/No]")
     # 	payload = request.json
     # 	message = payload["message"]
     # 	BP_medication = message.get("text","")
