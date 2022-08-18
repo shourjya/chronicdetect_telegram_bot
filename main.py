@@ -16,44 +16,36 @@ def send_telegram_message(chat_id, text):
 def bot_webhook():
     try :
 
-        if status == 1:
-            print("status 0")
+        payload = request.json
+        message = payload["message"]
+        chat_id = message["chat"]["id"]
+        text = message.get("text","")
+        print("Message received",text)
 
-            answer = "Do you want to continue? [Y/N]"
+        answer = "Welcome to Chronic Detect DTx Bot!"
+        send_telegram_message(chat_id,answer)
+        answer = "The bot will ask you a set of questions about your medical history and symptoms."
+        send_telegram_message(chat_id,answer)
+        answer = "The bot will then give you a risk score for developing heart attack or stroke within the next 10 years."
+        send_telegram_message(chat_id,answer)
+
+        answer = "Do you want to continue? [Y/N]"
+        send_telegram_message(chat_id,answer)
+
+        if answer == "Y":
+            print("status 1")
+
+            answer = "What is your age?"
             send_telegram_message(chat_id,answer)
-
-            payload1 = request.json
-            message1 = payload1["message"]
-            letsgo = message1.get("text","")
-            print("User Status",letsgo)
 
             status = 2
 
         elif status == 2:
             print("satus 2")
 
-        elif status == 3:
-            print("satus 3")
+            age = text
 
-        elif status == 4:
-            print("satus 4")
-            
-        else
-            payload = request.json
-            message = payload["message"]
-            chat_id = message["chat"]["id"]
-            text = message.get("text","")
-            print("Message received",text)
-
-            answer = "Welcome to Chronic Detect DTx Bot!"
-            send_telegram_message(chat_id,answer)
-            answer = "The bot will ask you a set of questions about your medical history and symptoms."
-            send_telegram_message(chat_id,answer)
-            answer = "The bot will then give you a risk score for developing heart attack or stroke within the next 10 years."
-            send_telegram_message(chat_id,answer)
-
-            status = 1
-
+            status = 3
 
     except Exception as e:
         print(e)
