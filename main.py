@@ -32,7 +32,7 @@ def bot_webhook():
         answer = "Do you want to continue? [Y/N]"
         send_telegram_message(chat_id,answer)
 
-        if answer == "Y":
+        if text == "Y":
             print("status 1")
 
             answer = "What is your age?"
