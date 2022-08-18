@@ -16,7 +16,7 @@ def send_telegram_message(chat_id, text):
 def bot_webhook():
     try :
 
-        if status == 1
+        if status == 1:
             print("status 0")
 
             answer = "Do you want to continue? [Y/N]"
@@ -29,14 +29,15 @@ def bot_webhook():
 
             status = 2
 
-        elif status == 2
+        elif status == 2:
             print("satus 2")
 
-        elif status == 3
+        elif status == 3:
             print("satus 3")
 
-        elif status == 4
+        elif status == 4:
             print("satus 4")
+            
         else
             payload = request.json
             message = payload["message"]
