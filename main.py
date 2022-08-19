@@ -22,7 +22,7 @@ def bot_webhook():
         text = message.get("text","")
         print("Message received",text)
 
-        # if (text != "Y","N") | (status == 8):
+        # if (text != "Y","N") | (status == 10):
         #     answer = "Welcome to Chronic Detect DTx Bot!"
         #     send_telegram_message(chat_id,answer)
         #     answer = "The bot will ask you a set of questions about your medical history and symptoms."
@@ -43,15 +43,7 @@ def bot_webhook():
 
             status = 2
 
-        if text == "N":
-            print("status 10")
-
-            answer = "Sorry to hear that!"
-            send_telegram_message(chat_id,answer)
-
-            status = 8
-
-        if status == 2:
+        elif status == 2:
             print("status 2")
 
             age = text
@@ -59,7 +51,7 @@ def bot_webhook():
 
             status = 3
 
-        if status == 3:
+        elif status == 3:
             print("status 3")
 
             sex = text
@@ -67,7 +59,7 @@ def bot_webhook():
 
             status = 4
 
-        if status == 4:
+        elif status == 4:
             print("status 4")
 
             smoker = text
@@ -75,7 +67,7 @@ def bot_webhook():
 
             status = 5
 
-        if status == 5:
+        elif status == 5:
             print("status 5")
 
             diabetes = text
@@ -83,7 +75,7 @@ def bot_webhook():
 
             status = 6
 
-        if status == 6:
+        elif status == 6:
             print("status 6")
 
             blood_cholesterol = text
@@ -91,13 +83,31 @@ def bot_webhook():
 
             status = 7
 
-        if status == 7:
+        elif status == 7:
             print("status 7")
 
             blood_pressure = text
             send_telegram_message(chat_id,"Do you have take blood pressure medication? [Yes/No]")
 
             status = 8
+
+        elif status == 8:
+            print("status 8")
+
+            blood_pressure_medication = text
+            send_telegram_message(chat_id,"This is the end of the Q&A.")
+
+            status = 10
+
+        if text == "N":
+            print("status 10")
+
+            answer = "Sorry to hear that!"
+            send_telegram_message(chat_id,answer)
+
+            status = 10
+
+
     except Exception as e:
         print(e)
 
