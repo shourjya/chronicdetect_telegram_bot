@@ -60,7 +60,7 @@ def bot_webhook():
             status = 3
 
         if status == 3:
-            print("status 2")
+            print("status 3")
 
             sex = text
             send_telegram_message(chat_id,"WAre you a smoker? [Smoker/Non-Smoker]")
@@ -68,33 +68,33 @@ def bot_webhook():
             status = 4
 
         if status == 4:
-            print("status 2")
+            print("status 4")
 
-            age = text
+            smoker = text
             send_telegram_message(chat_id,"Do you have diabetes? [No/Type 1/Type 2]")
 
             status = 5
 
         if status == 5:
-            print("status 2")
+            print("status 5")
 
-            age = text
+            diabetes = text
             send_telegram_message(chat_id,"Do you have high blood cholesterol? [Yes/No]")
 
             status = 6
 
         if status == 6:
-            print("status 2")
+            print("status 6")
 
-            age = text
+            blood_cholesterol = text
             send_telegram_message(chat_id,"Do you have high blood pressure? [Yes/No]")
 
             status = 7
 
         if status == 7:
-            print("status 2")
+            print("status 7")
 
-            age = text
+            blood_pressure = text
             send_telegram_message(chat_id,"Do you have take blood pressure medication? [Yes/No]")
 
             status = 8
