@@ -38,12 +38,15 @@ def bot_webhook():
             answer = "What is your age?"
             send_telegram_message(chat_id,answer)
 
+            age = text
+
             status = 2
 
-        elif status == 2:
+        if status == 2:
             print("satus 2")
 
             age = text
+            send_telegram_message(chat_id,"What is your sex? [M/F]")
 
             status = 3
 
