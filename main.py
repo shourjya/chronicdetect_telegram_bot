@@ -26,8 +26,9 @@ def bot_webhook():
     except Exception as e:
         print(e)
 
-    return {}, 200
+    return text
 
+text = bot_webhook()
 if (text = "/start") | (status == 10):
     answer = "Welcome to Chronic Detect DTx Bot!"
     send_telegram_message(chat_id,answer)
@@ -38,7 +39,7 @@ if (text = "/start") | (status == 10):
 
     answer = "Do you want to continue? [Y/N]"
     send_telegram_message(chat_id,answer)
-    bot_webhook()
+    text = bot_webhook()
     
 
 if __name__ == '__main__':
