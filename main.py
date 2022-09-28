@@ -12,6 +12,7 @@ def send_telegram_message(chat_id, text):
  		"text":text
  	})
 
+@app.route(f"/{TELEGRAM_API_TOKEN}", methods=["GET","POST"])
 def bot_webhook():
 	try :
         payload = request.json
@@ -22,9 +23,6 @@ def bot_webhook():
     except Exception as e:
         print(e)
     return {}, 200
-
-@app.route(f"/{TELEGRAM_API_TOKEN}", methods=["GET","POST"])
-bot_webhook()
 
 if __name__ == '__main__':
 	app.run(port=5000,debug=True)
