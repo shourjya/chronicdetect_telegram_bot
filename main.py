@@ -12,7 +12,7 @@ def send_telegram_message(chat_id, text):
  		"text":text
  	})
 
-@app.route(f"/{TELEGRAM_API_TOKEN}", methods=["POST"])
+@app.route(f"/{TELEGRAM_API_TOKEN}", methods=["GET","POST"])
 
 def bot_webhook():
     try :
@@ -28,7 +28,7 @@ def bot_webhook():
 
     return text
 
-text = bot_webhook()
+to_print = bot_webhook()
 
 if __name__ == '__main__':
    app.run(port=5000,debug=True)
