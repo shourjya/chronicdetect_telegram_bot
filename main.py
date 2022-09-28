@@ -21,10 +21,10 @@ def bot_webhook():
         print("Message received ->",text)
     except Exception as e:
         print(e)
-    return text
+    return text, 200
 
 @app.route(f"/{TELEGRAM_API_TOKEN}", methods=["GET","POST"])
-to_print = bot_webhook()
+to_print, val = bot_webhook()
 
 if __name__ == '__main__':
 	app.run(port=5000,debug=True)
