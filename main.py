@@ -29,7 +29,7 @@ def bot_webhook():
     return text
 
 text = bot_webhook()
-if (text = "/start") | (status == 10):
+if (text == '/start') | (status == 10):
     answer = "Welcome to Chronic Detect DTx Bot!"
     send_telegram_message(chat_id,answer)
     answer = "The bot will ask you a set of questions about your medical history and symptoms."
