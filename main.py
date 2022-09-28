@@ -12,23 +12,19 @@ def send_telegram_message(chat_id, text):
  		"text":text
  	})
 
-@app.route(f"/{TELEGRAM_API_TOKEN}", methods=["GET","POST"])
-
 def bot_webhook():
-    try :
-
+	try :
         payload = request.json
         message = payload["message"]
         chat_id = message["chat"]["id"]
         text = message.get("text","")
         print("Message received ->",text)
-
     except Exception as e:
         print(e)
-
     return text
 
+@app.route(f"/{TELEGRAM_API_TOKEN}", methods=["GET","POST"])
 to_print = bot_webhook()
 
 if __name__ == '__main__':
-   app.run(port=5000,debug=True)
+	app.run(port=5000,debug=True)
