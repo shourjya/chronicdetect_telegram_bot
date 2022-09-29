@@ -14,12 +14,13 @@ def send_telegram_message(chat_id, text):
  	})
 
 def ask_age(chat_id):
+    print("******** ->")
     r = requests.get(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
         "chat_id": chat_id,
         "question": "What is your age",
         "options": json.dumps(["Above 40-65","Below 65-79"])
     })
-    print("Input ->",r.text)
+    print("******** ->")
 
 def ask_gender(chat_id):
     requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
