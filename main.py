@@ -92,7 +92,7 @@ def bot_webhook():
             hypertension = ask_hypertension(chat_id)
             hypertension_dx = ask_hypertension_dx(chat_id)
 
-        if (text == '/input')
+        if (text == '/input'):
             print("Input ->",age)
             print("Input ->",gender)
             print("Input ->",smoker)
