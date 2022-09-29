@@ -113,7 +113,10 @@ def bot_webhook():
             response_text = "Something went wrong in sending the task"
         send_telegram_message(chat_id, response_text)
         return {}, 200
-    answer = "Hello to start type /start!"
+    
+    answer = "Hello to start type /start!, to get result type /result!"
+    send_telegram_message(chat_id,answer)
+    
     if (text == '/start'):
         answer = "Welcome to Chronic Detect DTx Bot!"
         send_telegram_message(chat_id,answer)
@@ -131,6 +134,10 @@ def bot_webhook():
         ask_diabetes(chat_id)
         ask_hypertension(chat_id)
         ask_hypertension_dx(chat_id)
+
+    if (text == '/result'):
+        answer = "You have 27 percent chance of developing heart disease in the next 10 years"
+        send_telegram_message(chat_id,answer)
 
     return {}, 200
 
