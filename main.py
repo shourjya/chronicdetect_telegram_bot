@@ -19,6 +19,7 @@ def ask_age(chat_id):
         "question": "What is your age",
         "options": json.dumps(["Above 40-65","Below 65-79"])
     })
+    return r
 
 def ask_gender(chat_id):
     requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
@@ -26,6 +27,7 @@ def ask_gender(chat_id):
         "question": "What is your gender",
         "options": json.dumps(["Male","Female"])
     })
+    return r
 
 def ask_smoker(chat_id):
     requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
@@ -33,6 +35,7 @@ def ask_smoker(chat_id):
         "question": "Are you a smoker",
         "options": json.dumps(["Current","Former","Never"])
     })
+    return r
 
 def ask_diabetes(chat_id):
     requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
@@ -40,6 +43,7 @@ def ask_diabetes(chat_id):
         "question": "History of Diabetes? ",
         "options": json.dumps(["No","Type 1","Type 2"])
     })
+    return r
 
 def ask_hypertension(chat_id):
     requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
@@ -47,6 +51,7 @@ def ask_hypertension(chat_id):
         "question": "History of Hyperternsion? ",
         "options": json.dumps(["Yes","No"])
     })
+    return r
 
 def ask_hypertension_dx(chat_id):
     requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
@@ -54,6 +59,7 @@ def ask_hypertension_dx(chat_id):
         "question": "Do you take medication for Hyperternsion? ",
         "options": json.dumps(["Yes","No"])
     })
+    return r
 
 @app.route(f"/{TELEGRAM_API_TOKEN}", methods=['POST','GET'])
 def bot_webhook():
@@ -77,12 +83,20 @@ def bot_webhook():
             send_telegram_message(chat_id,answer)
 
         if (text == 'Y'):
-            ask_age(chat_id)
-            ask_gender(chat_id)
-            ask_smoker(chat_id)
-            ask_diabetes(chat_id)
-            ask_hypertension(chat_id)
-            ask_hypertension_dx(chat_id)
+            age = ask_age(chat_id)
+            gender = ask_gender(chat_id)
+            smoker = ask_smoker(chat_id)
+            diabetes = ask_diabetes(chat_id)
+            hypertension = ask_hypertension(chat_id)
+            hypertension_dx = ask_hypertension_dx(chat_id)
+
+            print("Input ->",age)
+            print("Input ->",gender)
+            print("Input ->",smoker)
+            print("Input ->",diabetes)
+            print("Input ->",hypertension)
+            print("Input ->",hypertension_dx)
+
 
     except Exception as e:
         print(e)
