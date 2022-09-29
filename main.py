@@ -132,10 +132,6 @@ def bot_webhook():
         ask_hypertension(chat_id)
         ask_hypertension_dx(chat_id)
 
-    except Exception as e:
-        print(e)
-
-    send_telegram_message(chat_id, answer)
     return {}, 200
 
 
