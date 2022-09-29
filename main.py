@@ -46,12 +46,11 @@ def send_telegram_message(receiver_id: int, message: str):
     })
 
 def ask_age(chat_id):
-    r = requests.get(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
+    requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
         "chat_id": chat_id,
         "question": "What is your age",
         "options": json.dumps(["Above 40-65","Below 65-79"])
     })
-    return r
 
 def ask_gender(chat_id):
     requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
@@ -124,6 +123,17 @@ def bot_webhook():
         send_telegram_message(chat_id,answer)
         answer = "Do you want to start [Y/N]"
         send_telegram_message(chat_id,answer)
+
+    if (text == 'Y'):
+        ask_age(chat_id)
+        ask_gender(chat_id)
+        ask_smoker(chat_id)
+        ask_diabetes(chat_id)
+        ask_hypertension(chat_id)
+        ask_hypertension_dx(chat_id)
+
+    except Exception as e:
+        print(e)
 
     send_telegram_message(chat_id, answer)
     return {}, 200
