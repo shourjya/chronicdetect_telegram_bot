@@ -14,52 +14,47 @@ def send_telegram_message(chat_id, text):
  	})
 
 def ask_age(chat_id):
-    r = requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
+    r = requests.get(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
         "chat_id": chat_id,
         "question": "What is your age",
         "options": json.dumps(["Above 40-65","Below 65-79"])
     })
-    print("Input ->",r)
+    print("Input ->",r.text)
 
 def ask_gender(chat_id):
-    r = requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
+    requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
         "chat_id": chat_id,
         "question": "What is your gender",
         "options": json.dumps(["Male","Female"])
     })
-    print("Input ->",r)
 
 def ask_smoker(chat_id):
-    r = requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
+    requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
         "chat_id": chat_id,
         "question": "Are you a smoker",
         "options": json.dumps(["Current","Former","Never"])
     })
-    print("Input ->",r)
     
 def ask_diabetes(chat_id):
-    r = requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
+    requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
         "chat_id": chat_id,
         "question": "History of Diabetes? ",
         "options": json.dumps(["No","Type 1","Type 2"])
     })
-    print("Input ->",r)
     
 def ask_hypertension(chat_id):
-    r = requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
+    requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
         "chat_id": chat_id,
         "question": "History of Hyperternsion? ",
         "options": json.dumps(["Yes","No"])
     })
-    print("Input ->",r)
     
 def ask_hypertension_dx(chat_id):
-    r = requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
+    requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
         "chat_id": chat_id,
         "question": "Do you take medication for Hyperternsion? ",
         "options": json.dumps(["Yes","No"])
     })
-    print("Input ->",r)
 
 @app.route(f"/{TELEGRAM_API_TOKEN}", methods=['POST','GET'])
 def bot_webhook():
@@ -83,12 +78,12 @@ def bot_webhook():
             send_telegram_message(chat_id,answer)
 
         if (text == 'Y'):
-            age = ask_age(chat_id)
-            gender = ask_gender(chat_id)
-            smoker = ask_smoker(chat_id)
-            diabetes = ask_diabetes(chat_id)
-            hypertension = ask_hypertension(chat_id)
-            hypertension_dx = ask_hypertension_dx(chat_id)
+            ask_age(chat_id)
+            ask_gender(chat_id)
+            ask_smoker(chat_id)
+            ask_diabetes(chat_id)
+            ask_hypertension(chat_id)
+            ask_hypertension_dx(chat_id)
 
     except Exception as e:
         print(e)
