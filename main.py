@@ -45,6 +45,49 @@ def send_telegram_message(receiver_id: int, message: str):
         "text": message
     })
 
+def ask_age(chat_id):
+    r = requests.get(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
+        "chat_id": chat_id,
+        "question": "What is your age",
+        "options": json.dumps(["Above 40-65","Below 65-79"])
+    })
+    return r
+
+def ask_gender(chat_id):
+    requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
+        "chat_id": chat_id,
+        "question": "What is your gender",
+        "options": json.dumps(["Male","Female"])
+    })
+
+def ask_smoker(chat_id):
+    requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
+        "chat_id": chat_id,
+        "question": "Are you a smoker",
+        "options": json.dumps(["Current","Former","Never"])
+    })
+    
+def ask_diabetes(chat_id):
+    requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
+        "chat_id": chat_id,
+        "question": "History of Diabetes? ",
+        "options": json.dumps(["No","Type 1","Type 2"])
+    })
+    
+def ask_hypertension(chat_id):
+    requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
+        "chat_id": chat_id,
+        "question": "History of Hyperternsion? ",
+        "options": json.dumps(["Yes","No"])
+    })
+    
+def ask_hypertension_dx(chat_id):
+    requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
+        "chat_id": chat_id,
+        "question": "Do you take medication for Hyperternsion? ",
+        "options": json.dumps(["Yes","No"])
+    })
+
 
 @app.route(f"/{TELEGRAM_API_TOKEN}", methods=["POST"])
 def bot_webhook():
@@ -71,7 +114,17 @@ def bot_webhook():
             response_text = "Something went wrong in sending the task"
         send_telegram_message(chat_id, response_text)
         return {}, 200
-    answer = "Hello!"
+    answer = "Hello to start type /start!"
+    if (text == '/start'):
+        answer = "Welcome to Chronic Detect DTx Bot!"
+        send_telegram_message(chat_id,answer)
+        answer = "The bot will ask you a set of questions about your medical history and symptoms."
+        send_telegram_message(chat_id,answer)
+        answer = "The bot will then give you a risk score for developing heart attack or stroke within the next 10 years."
+        send_telegram_message(chat_id,answer)
+        answer = "Do you want to start [Y/N]"
+        send_telegram_message(chat_id,answer)
+
     send_telegram_message(chat_id, answer)
     return {}, 200
 
