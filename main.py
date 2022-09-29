@@ -81,6 +81,8 @@ def bot_webhook():
             send_telegram_message(chat_id,answer)
             answer = "Do you want to start [Y/N]"
             send_telegram_message(chat_id,answer)
+            answer = "To see last Input type /Input"
+            send_telegram_message(chat_id,answer)
 
         if (text == 'Y'):
             age = ask_age(chat_id)
@@ -90,6 +92,7 @@ def bot_webhook():
             hypertension = ask_hypertension(chat_id)
             hypertension_dx = ask_hypertension_dx(chat_id)
 
+        if (text == '/input')
             print("Input ->",age)
             print("Input ->",gender)
             print("Input ->",smoker)
