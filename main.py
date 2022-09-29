@@ -13,7 +13,7 @@ def send_telegram_message(chat_id, text):
         "text":text
  	})
 
-def continue_question(chat_id, text):
+def continue_question(chat_id):
     requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendMessage", json={
         "chat_id": chat_id,
         "question": "Do you want to continue",
