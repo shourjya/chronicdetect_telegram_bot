@@ -9,7 +9,6 @@ import json
 
 app = Flask(__name__)
 TELEGRAM_API_TOKEN = "5531087741:AAHNuNbYL267FWRBGHrKkblzPVo5PREIPC4"
-
 WENET_CLIENT_ID = 'EsKFhMYAIk'
 TASK_TYPE_ID = "63362710cad81310c5e74987"
 CLIENT_SECRET = 'Aa6PCRFwdZTGhXk4ighs'
@@ -89,7 +88,7 @@ def login():
                                                code=code,
                                                resource_id=external_id,
                                                cache=cache,
-                                               redirect_url="https://wenet-chatbot-tutorial.herokuapp.com/login"
+                                               redirect_url="https://chronic-detect-telegram-bot.herokuapp.com/login"
                                                )
     connector = WeNet.build(client)
     token_details = connector.service_api.get_token_details()
