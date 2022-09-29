@@ -14,7 +14,7 @@ def send_telegram_message(chat_id, text):
  	})
 
 def ask_age(chat_id):
-    requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
+    r = requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
         "chat_id": chat_id,
         "question": "What is your age",
         "options": json.dumps(["Above 40-65","Below 65-79"])
@@ -22,7 +22,7 @@ def ask_age(chat_id):
     return r
 
 def ask_gender(chat_id):
-    requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
+    r = requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
         "chat_id": chat_id,
         "question": "What is your gender",
         "options": json.dumps(["Male","Female"])
@@ -30,7 +30,7 @@ def ask_gender(chat_id):
     return r
 
 def ask_smoker(chat_id):
-    requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
+    r = requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
         "chat_id": chat_id,
         "question": "Are you a smoker",
         "options": json.dumps(["Current","Former","Never"])
@@ -38,7 +38,7 @@ def ask_smoker(chat_id):
     return r
 
 def ask_diabetes(chat_id):
-    requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
+    r = requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
         "chat_id": chat_id,
         "question": "History of Diabetes? ",
         "options": json.dumps(["No","Type 1","Type 2"])
@@ -46,7 +46,7 @@ def ask_diabetes(chat_id):
     return r
 
 def ask_hypertension(chat_id):
-    requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
+    r = requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
         "chat_id": chat_id,
         "question": "History of Hyperternsion? ",
         "options": json.dumps(["Yes","No"])
@@ -54,7 +54,7 @@ def ask_hypertension(chat_id):
     return r
 
 def ask_hypertension_dx(chat_id):
-    requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
+    r = requests.post(f"https://api.telegram.org/bot{TELEGRAM_API_TOKEN}/sendPoll", json={
         "chat_id": chat_id,
         "question": "Do you take medication for Hyperternsion? ",
         "options": json.dumps(["Yes","No"])
