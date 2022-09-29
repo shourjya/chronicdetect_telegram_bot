@@ -62,11 +62,11 @@ def bot_webhook():
     try :
 
         payload = request.json
+        print("Message received ->",payload)
         message = payload["message"]
         chat_id = message["chat"]["id"]
         text = message.get("text","")
         print("Message received ->",text)
-        print("Message received ->",payload)
 
         if (text == '/start'):
             answer = "Welcome to Chronic Detect DTx Bot!"
