@@ -131,14 +131,9 @@ def bot_webhook():
         ask_diabetes(chat_id)
         ask_hypertension(chat_id)
         ask_hypertension_dx(chat_id)
-        answer = "Hello to start type /start!, to get result type /result!"
-        send_telegram_message(chat_id,answer)
-
 
     if (text == '/result'):
         answer = "You have 27 percent chance of developing heart disease in the next 10 years"
-        send_telegram_message(chat_id,answer)
-        answer = "Hello to start type /start!, to get result type /result!"
         send_telegram_message(chat_id,answer)
 
     else:
