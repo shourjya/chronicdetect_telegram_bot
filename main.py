@@ -141,7 +141,7 @@ def bot_webhook():
         answer = "Hello to start type /start!, to get result type /result!"
         send_telegram_message(chat_id,answer)
 
-    else
+    else:
         answer = "Hello to start type /start!, to get result type /result!"
         send_telegram_message(chat_id,answer)
 
